@@ -72,8 +72,7 @@ Telegram üzerinden çalışan, Google Gemini AI ile kıyafet fotoğraflarını 
 
 ```
 outfit_bot/
-├── main.py           # Ana uygulama (çalıştırılacak dosya)
-├── mainsave.py       # Türkçe backup sürüm (kullanılmıyor)
+├── main.py           # Ana uygulama
 ├── database.py       # SQLite veritabanı işlemleri
 ├── error_handler.py  # Hata yönetimi
 ├── quick_actions.py  # Hızlı aksiyonlar (favori, son analiz)

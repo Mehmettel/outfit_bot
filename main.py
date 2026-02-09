@@ -2,13 +2,10 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
-from telegram.constants import ParseMode
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes, ConversationHandler
 from PIL import Image
 import io
 import logging
-import json
-from datetime import datetime
 from database import Database
 from error_handler import ErrorHandler
 from quick_actions import QuickActions
@@ -85,12 +82,6 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 # Gemini API configuration
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
-
-# Dictionaries to store user data
-user_preferences = {}  # Store user preferences
-user_states = {}      # Store user states
-user_events = {}      # Store user events
-user_favorites = {}   # Store user favorites
 
 async def check_user_state(update: Update, user_id: int) -> bool:
     """Check user state"""
@@ -355,11 +346,6 @@ async def finish_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             # Clear quick actions data
             quick_actions.clear_last_analysis(user_id)
-            
-            # Clear user data from local dictionaries
-            for user_dict in [user_preferences, user_states, user_events, user_favorites]:
-                if user_id in user_dict:
-                    del user_dict[user_id]
             
             if success:
                 await update.message.reply_text(
