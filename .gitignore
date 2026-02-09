@@ -1,0 +1,34 @@
+# Environment variables (API keys - NEVER commit!)
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+bot_data.db
+outfit_bot.db
+
+# Logs
+bot.log
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+.env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
